@@ -1,6 +1,8 @@
+organization := "name.sccu"
+
 name := "stats"
 
-version := "1.0"
+version := "0.1"
 
 scalaVersion := "2.11.7"
 
@@ -13,5 +15,13 @@ libraryDependencies ++= Seq(
 
 libraryDependencies ++= Seq(
   "org.scala-lang" % "scala-compiler" % "2.11.7"
-//  "org.scala-lang" % "jline" % "2.11.0-M3"
 )
+
+libraryDependencies += "commons-cli" % "commons-cli" % "1.3.1"
+
+lazy val csv4s = ProjectRef(uri("git://github.com/sccu/csv4s.git#v0.1.6"), "csv4s")
+lazy val stats = (project in file(".")).
+  settings(
+    scalaVersion := "2.11.2"
+  ).
+  dependsOn(csv4s)
